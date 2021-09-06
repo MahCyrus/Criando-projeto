@@ -1,0 +1,18 @@
+package br.com.dio.todolist.extensions
+
+import com.google.android.material.textfield.TextInputLayout
+import java.text.SimpleDateFormat
+import java.util.*
+
+private val locale = Locale("pt", "BR")
+
+//Funçao para inserir um comportamento para a data
+fun Date.format() : String{
+    return SimpleDateFormat("dd/mm/yyyy", locale).format(this)
+}
+
+var TextInputLayout.text : String
+    get() = editText?.text?.toString() ?: ""
+    set(value) {
+        editText?.setText(value)
+    }
