@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Criar Tabela"
+        app:title="@string/label_new_task"
         app:navigationIcon="@drawable/ic_nav"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -32,7 +32,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_title"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Título"
+        android:hint="@string/label_title"
         android:layout_width="0dp"
         android:layout_marginTop="16dp"
         android:layout_height="wrap_content"
@@ -40,45 +40,43 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="@id/guide_start">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
-
-    </com.google.android.material.textfield.TextInputEditText>
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 <!--Descrição-->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descricao"
+        android:id="@+id/til_descricao"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        android:hint="Descrição"
+        android:hint="@string/label_descricao"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintTop_toBottomOf="@id/til_title">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:inputType="textMultiLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </com.google.android.material.textfield.TextInputEditText>
+    <com.google.android.material.textfield.TextInputEditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!--Data-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_date"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="8dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Data"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@id/descricao"
+        android:hint="@string/label_date"
+        app:layout_constraintTop_toBottomOf="@id/til_descricao"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toStartOf="@id/til_hour"
         app:startIconDrawable="@drawable/ic_calendar"
-        >
+        android:layout_marginRight="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -94,7 +92,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Hora"
+        android:hint="@string/label_hour"
         app:startIconDrawable="@drawable/ic_timer"
         app:layout_constraintStart_toEndOf="@id/til_date"
         app:layout_constraintTop_toTopOf="@id/til_date"
@@ -102,17 +100,18 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:focusable="false"
-            android:inputType="none"
-            android:layout_height="wrap_content"/>
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 <!--Botão cancelar-->
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
-        android:text="Cancelar"
+        android:text="@string/label_cancel"
         android:textAllCaps="false"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/new_task"
@@ -122,16 +121,15 @@
 <!--Botão criar-->
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button"
-        android:id="@+id/new_task"
+        android:id="@+id/btn_new_task"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Criar tarefa"
+        android:text="@string/label_new_task"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
