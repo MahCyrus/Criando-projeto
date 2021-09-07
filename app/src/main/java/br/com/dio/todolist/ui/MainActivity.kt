@@ -3,7 +3,9 @@ package br.com.dio.todolist.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import br.com.dio.todolist.databinding.ActivityMainBinding
+import br.com.dio.todolist.datasource.TaskDataSource
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,8 +27,30 @@ class MainActivity : AppCompatActivity() {
 
     private fun insertListeners() {
         binding.fab.setOnClickListener {
-            //Mandar essa Activity chamar a próxima Activity (AddTaskActivity)
-            startActivities(Intent(this, AddTaskActivity::class.java))
+            //Mandar essa Activity chamar a próxima Activity (AddTaskActivity) e retornar um resultado
+            startActivityForResult(Intent(this, AddTaskActivity::class.java), CREATE_NEW_TASK)
         }
+
+        adapter.listenerEdit = {
+            Log.e("TAG", "ListenerEdit:  + $it" )
+        }
+
+        adapter.listenerDelete = {
+            Log.e("TAG", "ListenerDelete:  + $it" )
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        //Ver se é o mesmo request code que mandou
+        if (requestCode == CREATE_NEW_TASK){
+            binding.rvTasks.adapter = adapter
+            adapter.submitList(TaskDataSource.getList())
+        }
+    }
+
+    //Criar Request Code
+    companion object {
+        private const val CREATE_NEW_TASK = 1000
     }
 }
