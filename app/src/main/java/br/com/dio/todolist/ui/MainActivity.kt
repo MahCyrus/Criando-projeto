@@ -1,5 +1,6 @@
 package br.com.dio.todolist.ui
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         //Configuração do RecyclerView
         binding.rvTasks.adapter = adapter //Vai receber o adapter que foi criado
-
+        updateList()
 
         insertListeners()
     }
@@ -32,21 +33,31 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter.listenerEdit = {
-            Log.e("TAG", "ListenerEdit:  + $it" )
+            /*Log.e("TAG", "ListenerEdit:  + $it" )*/
+            //Atualizar o item da lista
+            val intent = Intent(this, AddTaskActivity::class.java)
+            intent.putExtra(AddTaskActivity.TASK_ID, it.id)
+            startActivityForResult(intent, CREATE_NEW_TASK)
+
         }
 
         adapter.listenerDelete = {
-            Log.e("TAG", "ListenerDelete:  + $it" )
+            /*Log.e("TAG", "ListenerDelete:  + $it" )*/
+            TaskDataSource.deleteTask(it)
+            updateList()
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         //Ver se é o mesmo request code que mandou
-        if (requestCode == CREATE_NEW_TASK){
-            binding.rvTasks.adapter = adapter
-            adapter.submitList(TaskDataSource.getList())
+        if (requestCode == CREATE_NEW_TASK && requestCode == Activity.RESULT_OK){
+
         }
+    }
+
+    private fun updateList(){
+        adapter.submitList(TaskDataSource.getList())
     }
 
     //Criar Request Code

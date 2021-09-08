@@ -30,6 +30,17 @@ class AddTaskActivity : AppCompatActivity() {
         // .root = para usar o layout do objeto de vinculação
         setContentView(binding.root)
 
+        //Para inserir os dados quando editar
+        if(intent.hasExtra(TASK_ID)){
+            val taskId = intent.getIntExtra(TASK_ID, 0)//Else = 0
+            //Procurar uma task que pode ser nula
+            TaskDataSource.findById(taskId)?.let {
+                binding.tilTitle.text = it.title
+                binding.tilDate.text = it.date
+                binding.tilHour.text = it.hour
+            }
+        }
+
         //Para escolher uma data
         insertListeners()
     }
@@ -74,7 +85,8 @@ class AddTaskActivity : AppCompatActivity() {
                 title = binding.tilTitle.text,
                 descricao = binding.tilDescricao.text,
                 date =  binding.tilDate.text,
-                hour = binding.tilHour.text
+                hour = binding.tilHour.text,
+                id = intent.getIntExtra(TASK_ID, 0)
             )
             TaskDataSource.insertTask(task)
             /*Log.e("TAG", "insertListeners: " + TaskDataSource.getList() )*/
@@ -82,5 +94,9 @@ class AddTaskActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+    companion object {
+        const val TASK_ID = "task_id"
     }
 }
