@@ -12,7 +12,7 @@
 
         <!--Chamar a tela-->
         <activity
-            android:name="ui.MainActivity"
+            android:name="ui.StartActivity"
             android:theme="@style/Theme.ToDoList" >
 
             <intent-filter>
