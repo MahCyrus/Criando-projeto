@@ -8,4 +8,4 @@ Nele, poderá criar, editar e excluir tarefas.
 
 --- 
 
-###### PS: Teve a tentativa da implementação do BD, mas em breve colocarei.
+###### PS: Teve a tentativa de implementação do BD, mas em breve colocarei.
