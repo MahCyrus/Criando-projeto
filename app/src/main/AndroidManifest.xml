@@ -9,12 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoList">
-        <activity android:name=".ui.MainActivity">
+
+        <!--Chamar a tela-->
+        <activity
+            android:name="ui.MainActivity"
+            android:theme="@style/Theme.ToDoList" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <!--Para testar isoladamente-->
         <activity android:name=".ui.AddTaskActivity"/>

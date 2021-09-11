@@ -10,4 +10,6 @@
     <string name="label_des_new_task">Nova Tarefa</string>
     <string name="label_edit">Editar</string>
     <string name="label_delete">Deletar</string>
+    <string name="empyt_state">Você não tem tarefas no momento</string>
+    <string name="label_bemvindo">Bem vindo ao</string>
 </resources>
