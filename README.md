@@ -31,7 +31,7 @@
 </div>
 <br>
 
-## 💻 Técnologias utilizadas
+## 💻 Tecnologias utilizadas
 
 * [Kotlin](https://kotlinlang.org/)
 
